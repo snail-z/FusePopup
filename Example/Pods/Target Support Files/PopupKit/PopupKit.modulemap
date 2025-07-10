@@ -1,6 +1,0 @@
-framework module PopupKit {
-  umbrella header "PopupKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

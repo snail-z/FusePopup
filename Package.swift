@@ -3,31 +3,26 @@
 
 import PackageDescription
 
-// swift-tools-version:5.7
+// swift-tools-version:5.0
 import PackageDescription
 
 let package = Package(
-    name: "PopupKit",
+    name: "FusePopup",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "PopupKit",  // 对外 `import PopupKit`
-            targets: ["PopupKit"]
+            name: "FusePopup",  
+            targets: ["FusePopup"]
         ),
     ],
     targets: [
         .target(
-            name: "PopupKit",
+            name: "FusePopup",
             dependencies: [],
-            path: "Sources/PopupKit",
+            path: "Sources",
             resources: [.process("PrivacyInfo.xcprivacy")]
-        ),
-        .testTarget(
-            name: "PopupKitTests",
-            dependencies: ["PopupKit"],
-            path: "Tests/PopupKitTests"
         )
     ]
 )

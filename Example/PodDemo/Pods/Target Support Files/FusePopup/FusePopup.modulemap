@@ -1,0 +1,6 @@
+framework module FusePopup {
+  umbrella header "FusePopup-umbrella.h"
+
+  export *
+  module * { export * }
+}

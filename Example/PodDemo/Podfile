@@ -1,0 +1,8 @@
+use_frameworks!
+
+platform :ios, '13.0'
+
+target 'PodDemo' do
+    pod 'FusePopup', :path => '../../'
+
+end

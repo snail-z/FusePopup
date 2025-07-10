@@ -1,0 +1,16 @@
+PODS:
+  - FusePopup (1.1.0)
+
+DEPENDENCIES:
+  - FusePopup (from `../../`)
+
+EXTERNAL SOURCES:
+  FusePopup:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  FusePopup: 747a4126c1b2fa6b1d6e8bb351d2e724b86b21fb
+
+PODFILE CHECKSUM: e9ba4e013d012216b8829be824d7575debef0437
+
+COCOAPODS: 1.16.2
