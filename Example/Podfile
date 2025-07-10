@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '13.0'
+
+target 'NeonPopupKit_Example' do
+  pod 'PopupKit', :path => '../'
+
+  target 'NeonPopupKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
