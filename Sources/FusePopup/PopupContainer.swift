@@ -1,6 +1,6 @@
 //
 //  PopupContainer.swift
-//  PopupKit
+//  FusePopup
 //
 //  Created by zhang on 2020/2/26.
 //  Copyright © 2020 snail-z <haozhang0770@163.com> All rights reserved.
@@ -69,7 +69,7 @@ internal class PopupContainer: UIView {
         becomeKeyboardIfNeeded()
         let animator = config.animator ?? enterAnimator(from: config.animationType)
         animator.animateIn(container: self, coverView: coverView, contentView: contentView, completion: completion)
-        Popupkit.log("[PopupPresenter] showing contentView: \(type(of: contentView)), placement: \(config.placement), animator: \(animator)")
+        FusePopup.log("[PopupPresenter] showing contentView: \(type(of: contentView)), placement: \(config.placement), animator: \(animator)")
     }
 
     func performDismissAnimation(completion: @escaping () -> Void) {
@@ -77,7 +77,7 @@ internal class PopupContainer: UIView {
         resignKeyboardIfNeeded()
         let animator = config.animator ?? exitAnimator(from: config.animationType)
         animator.animateOut(container: self, coverView: coverView, contentView: contentView, completion: completion)
-        Popupkit.log("[PopupPresenter] dismiss contentView: \(type(of: contentView)), placement: \(config.placement), animator: \(animator)")
+        FusePopup.log("[PopupPresenter] dismiss contentView: \(type(of: contentView)), placement: \(config.placement), animator: \(animator)")
     }
 
     private func enterAnimator(from type: PopupConfiguration.AnimationType) -> PopupAnimatable {
@@ -191,7 +191,7 @@ internal class PopupContainer: UIView {
     }
     
     deinit {
-        Popupkit.log("[PopupPresenter] deinit🧹 [\(type(of: contentView))]")
+        FusePopup.log("[PopupPresenter] deinit🧹 [\(type(of: contentView))]")
     }
     
     required init?(coder: NSCoder) {

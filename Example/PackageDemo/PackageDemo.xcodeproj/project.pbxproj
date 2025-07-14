@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8842BAA2E2536C000A1C18D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8842BA92E2536C000A1C18D /* SnapKit */; };
 		B8DA74BD2E1FC62900E665DB /* FusePopup in Frameworks */ = {isa = PBXBuildFile; productRef = B8DA74BC2E1FC62900E665DB /* FusePopup */; };
 		B8DA75102E1FC6F000E665DB /* FusePopup in Frameworks */ = {isa = PBXBuildFile; productRef = B8DA750F2E1FC6F000E665DB /* FusePopup */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8842BAA2E2536C000A1C18D /* SnapKit in Frameworks */,
 				B8DA75102E1FC6F000E665DB /* FusePopup in Frameworks */,
 				B8DA74BD2E1FC62900E665DB /* FusePopup in Frameworks */,
 			);
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				B8DA74BC2E1FC62900E665DB /* FusePopup */,
 				B8DA750F2E1FC6F000E665DB /* FusePopup */,
+				B8842BA92E2536C000A1C18D /* SnapKit */,
 			);
 			productName = PackageDemo;
 			productReference = B8DA747D2E1FC0E800E665DB /* PackageDemo.app */;
@@ -118,6 +121,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				B8DA750E2E1FC6F000E665DB /* XCLocalSwiftPackageReference "../../../FusePopup" */,
+				B8842BA82E2536C000A1C18D /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8DA747E2E1FC0E800E665DB /* Products */;
@@ -355,7 +359,23 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		B8842BA82E2536C000A1C18D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		B8842BA92E2536C000A1C18D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8842BA82E2536C000A1C18D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		B8DA74BC2E1FC62900E665DB /* FusePopup */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FusePopup;

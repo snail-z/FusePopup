@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.summary          = 'A flexible chain-style popup manager for iOS.'
 
   s.description      = <<-DESC
-  PopupKit is a lightweight, chain-style popup management framework for iOS.
+  FusePopup is a lightweight, chain-style popup management framework for iOS.
   It supports custom popup conditions, lifecycle binding, and multiple presentation strategies.
   DESC
 

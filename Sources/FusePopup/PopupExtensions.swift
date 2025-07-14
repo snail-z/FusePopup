@@ -1,6 +1,6 @@
 //
 //  PopupExtensions.swift
-//  PopupKit
+//  FusePopup
 //
 //  Created by zhang on 2020/2/26.
 //  Copyright © 2020 snail-z <haozhang0770@163.com> All rights reserved.
@@ -102,18 +102,18 @@ internal extension PopupAnimationOptions {
     }
 }
 
-internal struct Popupkit {
+internal struct FusePopup {
     
     static func log(_ message: @autoclosure () -> Any) {
     #if DEBUG
-        print("[PopupKit] \(message())")
+        print("[FusePopup] \(message())")
     #endif
     }
     
     static func log(_ anyObj: AnyObject, _ message: @autoclosure () -> Any) {
     #if DEBUG
         let type = String(describing: type(of: anyObj))
-        print("[PopupKit] [\(type)] \(message())")
+        print("[FusePopup] [\(type)] \(message())")
     #endif
     }
 }

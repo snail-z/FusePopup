@@ -1,6 +1,6 @@
 //
 //  PopupChainDispatcher.swift
-//  PopupKit
+//  FusePopup
 //
 //  Created by zhang on 2020/2/26.
 //  Copyright © 2020 snail-z <haozhang0770@163.com> All rights reserved.
@@ -60,7 +60,7 @@ final public class PopupChainDispatcher: NSObject, @unchecked Sendable {
             nodeArray.addObjects(from: nodes)
             let ownerType = String(describing: type(of: owner))
             let nodeRepresentables = nodes.map { $0.representable }
-            Popupkit.log(self, "addNodes: Owner=\(ownerType) Representable=\(nodeRepresentables)")
+            FusePopup.log(self, "addNodes: Owner=\(ownerType) Representable=\(nodeRepresentables)")
         }
     }
     
@@ -69,7 +69,7 @@ final public class PopupChainDispatcher: NSObject, @unchecked Sendable {
         syncQueue.async(flags: .barrier) {
             self.strategyMap.setObject(NSNumber(value: strategy.rawValue), forKey: owner)
             let ownerType = String(describing: type(of: owner))
-            Popupkit.log(self, "start: Owner=\(ownerType) with strategy=\(strategy)")
+            FusePopup.log(self, "start: Owner=\(ownerType) with strategy=\(strategy)")
             if let nodeArray = self.ownerMap.object(forKey: owner) as? [PopupChainNode] {
                 let headNode = PopupChainNode.linkNodes(nodeArray)
                 if let headNode = headNode {
@@ -107,9 +107,9 @@ final public class PopupChainDispatcher: NSObject, @unchecked Sendable {
     /// 检查节点是否属于有效owner
     private func isNodeValid(_ node: PopupChainNode) -> Bool {
         for owner in self.ownerMap.keyEnumerator() {
-            if let owner = owner as? AnyObject,
-               let nodeArray = self.ownerMap.object(forKey: owner),
-               nodeArray.contains(node) {
+            let owner = owner as AnyObject
+            if let nodeArray = self.ownerMap.object(forKey: owner),
+                nodeArray.contains(node) {
                 return true
             }
         }
@@ -122,18 +122,18 @@ final public class PopupChainDispatcher: NSObject, @unchecked Sendable {
             let ownerType = String(describing: type(of: owner))
             while let currentNode = node {
                 if !self.isNodeValid(currentNode) {
-                    Popupkit.log(self, "moveToNext: Owner=\(ownerType) skipping invalid node \(currentNode.representable)")
+                    FusePopup.log(self, "moveToNext: Owner=\(ownerType) skipping invalid node \(currentNode.representable)")
                     node = currentNode.next
                     self.currentNodeMap.setObject(node, forKey: owner)
                     continue
                 }
                 if !currentNode.representable.shouldShowInPopupChain() {
-                    Popupkit.log(self, "moveToNext: Owner=\(ownerType) skipping node \(currentNode.representable) due to shouldShowInPopupChain=false")
+                    FusePopup.log(self, "moveToNext: Owner=\(ownerType) skipping node \(currentNode.representable) due to shouldShowInPopupChain=false")
                     node = currentNode.next
                     self.currentNodeMap.setObject(node, forKey: owner)
                     continue
                 }
-                Popupkit.log(self, "moveToNext: Owner=\(ownerType) ready to present node \(currentNode.representable)")
+                FusePopup.log(self, "moveToNext: Owner=\(ownerType) ready to present node \(currentNode.representable)")
                 DispatchQueue.main.async {
                     self.handleNodePresentation(currentNode, owner: owner)
                 }
@@ -142,26 +142,26 @@ final public class PopupChainDispatcher: NSObject, @unchecked Sendable {
             self.ownerMap.removeObject(forKey: owner)
             self.currentNodeMap.removeObject(forKey: owner)
             self.strategyMap.removeObject(forKey: owner)
-            Popupkit.log(self, "moveToNext: Owner=\(ownerType) no more nodes to present - cleanup completed.<END>")
+            FusePopup.log(self, "moveToNext: Owner=\(ownerType) no more nodes to present - cleanup completed.<END>")
         }
     }
  
     private func handleNodePresentation(_ currentNode: PopupChainNode, owner: OwnerObject) {
         let ownerType = String(describing: type(of: owner))
         currentNode.representable.present(in: owner.popupChainContainerView) {
-            Popupkit.log(self, "presentation completed: Owner=\(ownerType) node=\(currentNode.representable)")
+            FusePopup.log(self, "presentation completed: Owner=\(ownerType) node=\(currentNode.representable)")
             currentNode.onPopupResult?(true)
         } moveToNext: {
             self.syncQueue.async(flags: .barrier) {
                 if self.strategy(for: owner) == .single {
-                    Popupkit.log(self, "proceed called: Owner=\(ownerType) strategy=single")
+                    FusePopup.log(self, "proceed called: Owner=\(ownerType) strategy=single")
                     self.currentNodeMap.removeObject(forKey: owner)
                 } else {
                     if let next = currentNode.next {
-                        Popupkit.log(self, "proceed called: Owner=\(ownerType) strategy=sequence")
+                        FusePopup.log(self, "proceed called: Owner=\(ownerType) strategy=sequence")
                         self.currentNodeMap.setObject(next, forKey: owner)
                     } else {
-                        Popupkit.log(self, "proceed called: Owner=\(ownerType) strategy=sequence - chain ended no more nodes.")
+                        FusePopup.log(self, "proceed called: Owner=\(ownerType) strategy=sequence - chain ended no more nodes.")
                         self.currentNodeMap.removeObject(forKey: owner)
                     }
                 }

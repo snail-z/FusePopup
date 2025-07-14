@@ -1,6 +1,6 @@
 //
 //  PopupChainNode.swift
-//  PopupKit
+//  FusePopup
 //
 //  Created by zhang on 2020/2/26.
 //  Copyright © 2020 snail-z <haozhang0770@163.com> All rights reserved.
@@ -36,7 +36,7 @@ public class PopupChainNode: NSObject, @unchecked Sendable {
 public extension PopupChainNode {
     
     /// 将一组弹窗节点顺序连接成链表，并返回头节点
-    @objc public static func linkNodes(_ nodes: [PopupChainNode]) -> PopupChainNode? {
+    @objc static func linkNodes(_ nodes: [PopupChainNode]) -> PopupChainNode? {
         guard !nodes.isEmpty else {
             return nil
         }
