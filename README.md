@@ -2,14 +2,14 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://cocoapods.org/pods/FusePopup)
 [![Platform](https://img.shields.io/badge/platform-%20iOS11.0+%20-lightgrey.svg)](http://cocoapods.org/pods/FusePopup)
-[![Version](https://img.shields.io/badge/pod-v1.1.0-brightgreen.svg)](http://cocoapods.org/pods/FusePopup)
+[![Version](https://img.shields.io/badge/pod-v1.0.0-brightgreen.svg)](http://cocoapods.org/pods/FusePopup)
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat"></a>
 
 FusePopup makes it easy to present custom popup views in your iOS app. It supports customizable animations, flexible placement, mask effects, keyboard handling, and more. The API is clean, simple, and developer-friendly.
 
 ### Version 1.0
 
-FusePopup 1.1.0 is a complete redesign and refactor of the original version. Some APIs from 1.0 are no longer compatible, so please upgrade carefully.
+FusePopup 1.0 is a complete redesign and refactor of the original version. Some APIs from 0.x are no longer compatible, so please upgrade carefully.
 
 The new version is more concise, extensible, and stable. Check out the demo project for details.
 
@@ -30,7 +30,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'You Project' do
-    pod 'FusePopup', '~> 1.1.0'
+    pod 'FusePopup', '~> 1.0.0'
 end
 ```
 
@@ -43,13 +43,13 @@ Then run `pod install`
 #### Using Xcode:
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/snail-z/FusePopup.git`
-- Select "Up to Next Major" with "1.1.0"
+- Select "Up to Next Major" with "1.0.0"
 
 #### Using Package.swift:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/snail-z/FusePopup.git", .upToNextMajor(from: "1.1.0"))
+    .package(url: "https://github.com/snail-z/FusePopup.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 Run swift build to fetch and integrate the package..
