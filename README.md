@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/badge/pod-v2.0.0-brightgreen.svg)](http://cocoapods.org/pods/FusePopup)
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat"></a>
 
-**FusePopup** makes it easy to present custom popup views in your iOS app. It supports customizable animations, flexible placement, mask effects, keyboard handling, and more. The API is clean, simple, and developer-friendly.
+FusePopup makes it easy to present custom popup views in your iOS app. It supports customizable animations, flexible placement, mask effects, keyboard handling, and more. The API is clean, simple, and developer-friendly.
 
 ### Version 2.0
 
@@ -30,7 +30,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'You Project' do
-	pod 'FusePopup', '~> 2.0'
+    pod 'FusePopup', '~> 2.0'
 end
 ```
 
@@ -60,7 +60,7 @@ If you prefer not to use either of the aforementioned dependency managers, you c
 
 ## Usage
 
-* To present a custom popup, your view must conform to the `PopupPresentable` protocol:
+- To present a custom popup, your view must conform to the `PopupPresentable` protocol:
 
   ```swift
   import FusePopup
