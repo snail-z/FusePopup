@@ -152,4 +152,5 @@ snail-z, haozhang0770@163.com
 
 ## License
 
+
 FusePopup is available under the MIT license. See the LICENSE file for more info.
